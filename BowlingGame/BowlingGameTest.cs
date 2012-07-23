@@ -20,6 +20,11 @@ namespace BowlingGame
 			g.Roll(5);
 		}
 
+		private void RollStrike ()
+		{
+			g.Roll(10);
+		}
+
 		[SetUp]
 		protected void SetUp ()
 		{
@@ -47,6 +52,16 @@ namespace BowlingGame
 			g.Roll(3);
 			RollMany(17, 0);
 			Assert.AreEqual(16, g.Score);
+		}
+
+		[Test()]
+		public void TestOneStrike ()
+		{
+			RollStrike();
+			g.Roll(3);
+			g.Roll(4);
+			RollMany(16, 0);
+			Assert.AreEqual(24, g.Score);
 		}
 	}
 }

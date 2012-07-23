@@ -17,14 +17,41 @@ namespace BowlingGame
 				int score = 0;
 				int frameIndex = 0;
 				for (int frame = 0; frame < 10; frame++) {
-					if (IsSpare(frameIndex))
-						score += 10 + rolls[frameIndex + 2];
-					else
-						score += rolls[frameIndex] + rolls[frameIndex + 1];
-					frameIndex += 2;
+					if (IsStrike (frameIndex)) {
+						score += 10 + StrikeBonus(frameIndex);
+						frameIndex++;
+					}
+					if (IsSpare(frameIndex)) {
+						score += 10 + SpareBonus(frameIndex);
+						frameIndex += 2;
+					}
+					else {
+						score += SumOfBallsInFrame(frameIndex);
+						frameIndex += 2;
+					}
 				}
 				return score;
 			}
+		}
+
+		private int SumOfBallsInFrame (int frameIndex)
+		{
+			return rolls[frameIndex] + rolls[frameIndex + 1];
+		}
+
+		private int SpareBonus (int frameIndex)
+		{
+			return rolls[frameIndex + 2];
+		}
+
+		private int StrikeBonus (int frameIndex)
+		{
+			return rolls[frameIndex + 1] + rolls[frameIndex + 2];
+		}
+
+		private bool IsStrike (int frameIndex)
+		{
+			return rolls[frameIndex] == 10;
 		}
 
 		private bool IsSpare (int frameIndex)
