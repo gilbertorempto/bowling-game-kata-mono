@@ -14,6 +14,12 @@ namespace BowlingGame
 				g.Roll(pins);
 		}
 
+		private void RollSpare ()
+		{
+			g.Roll(5);
+			g.Roll(5);
+		}
+
 		[SetUp]
 		protected void SetUp ()
 		{
@@ -32,6 +38,15 @@ namespace BowlingGame
 		{
 			RollMany(20, 1);
 			Assert.AreEqual(20, g.Score);
+		}
+
+		[Test()]
+		public void TestOneSpare ()
+		{
+			RollSpare();
+			g.Roll(3);
+			RollMany(17, 0);
+			Assert.AreEqual(16, g.Score);
 		}
 	}
 }
