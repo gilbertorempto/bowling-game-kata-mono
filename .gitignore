@@ -4,3 +4,10 @@ obj
 
 # mstest test results
 TestResults
+BowlingGame/.DS_Store
+
+.DS_Store
+
+BowlingGame/test-results/BowlingGame.csproj-Debug-2012-07-19.xml
+
+BowlingGame/test-results/BowlingGame.csproj.test-cache
