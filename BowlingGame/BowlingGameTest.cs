@@ -63,6 +63,13 @@ namespace BowlingGame
 			RollMany(16, 0);
 			Assert.AreEqual(24, g.Score);
 		}
+
+		[Test()]
+		public void TestPerfectGame ()
+		{
+			RollMany(12, 10);
+			Assert.AreEqual(300, g.Score);
+		}
 	}
 }
 
